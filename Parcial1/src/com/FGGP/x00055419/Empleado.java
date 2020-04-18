@@ -2,7 +2,7 @@ package com.FGGP.x00055419;
 import java.util.ArrayList;
 public abstract class Empleado {
     protected String nombre, puesto;
-    protected ArrayList<Documento> documento;
+    protected ArrayList<Documento> documentos=new ArrayList();
     protected double salario;
 
     public Empleado(String nombre, String puesto, double salario) {
@@ -15,15 +15,25 @@ public abstract class Empleado {
         return nombre;
     }
 
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "nombre='" + nombre + '\'' +
+                ", puesto='" + puesto + '\'' +
+                ", documento=" + documentos +
+                ", salario=" + salario +
+                '}';
+    }
+
     public String getPuesto() {
         return puesto;
     }
 
-    public ArrayList<Documento> getDocumento() {
-        return documento;
+    public ArrayList<Documento> getDocumentos() {
+        return documentos;
     }
     public void addDocumento(Documento doc){
-
+        documentos.add(doc);
     }
     public void removeDocumento(String documento){
 

@@ -23,4 +23,12 @@ public class Empresa {
     public void quitEmpleado(String nombre){
 
     }
+
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "nombre='" + nombre + '\'' +
+                ", planilla=" + planilla +
+                '}';
+    }
 }

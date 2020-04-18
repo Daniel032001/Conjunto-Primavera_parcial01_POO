@@ -44,6 +44,7 @@ public class Main {
                                 Documento nuevodocumento= new Documento(nombredoc, numerodoc);
                                 plaza.addDocumento(nuevodocumento);
                             }
+                            System.out.println(plaza.toString());
                         } else {
                             extension=0;
                             while(extension==0){
@@ -61,11 +62,13 @@ public class Main {
                             nuevaEmpresa.addEmpleado(servicio);
                             while(agregardoc==true) {
                                 agregardoc();
-                                Documento nuevodocumento= new Documento(nombredoc, numerodoc);
-                                servicio.addDocumento(nuevodocumento);
+                                Documento nuevodocu= new Documento(nombredoc, numerodoc);
+                                servicio.addDocumento(nuevodocu);
                             }
+                            System.out.println(servicio.toString());
                           }
                         JOptionPane.showMessageDialog(null,"Empleado agregado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
+
                         break;
                     case 2:
                         break;

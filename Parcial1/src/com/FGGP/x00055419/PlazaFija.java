@@ -21,8 +21,8 @@ public class PlazaFija extends Empleado {
                 "extension=" + extension +
                 ", nombre='" + nombre + '\'' +
                 ", puesto='" + puesto + '\'' +
-                ", documento=" + documento +
+                ", documento=" + documentos +
                 ", salario=" + salario +
-                '}';
+                '}'+getDocumentos().toString();
     }
 }
