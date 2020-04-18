@@ -20,6 +20,15 @@ public class Main {
                     case 1:
                         agregarempleado();
                         if (tipo == 1) {
+                            meses=0;
+                            while(meses==0){
+                                try {
+                                    meses = Integer.parseInt(JOptionPane.showInputDialog(null, "Meses :",
+                                            "Ingresa los meses", JOptionPane.QUESTION_MESSAGE));
+                                } catch (NullPointerException e) {
+                                    campovacio();
+                                }
+                            }
                             PlazaFija plaza = new PlazaFija(nombreempleado, puesto, salario, meses);
                             nuevaEmpresa.addEmpleado(plaza);
                         } else {
