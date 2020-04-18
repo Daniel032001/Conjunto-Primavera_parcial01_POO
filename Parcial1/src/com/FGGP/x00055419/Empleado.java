@@ -22,7 +22,7 @@ public abstract class Empleado {
     public ArrayList<Documento> getDocumento() {
         return documento;
     }
-    public void addDocumento(Documento documento){
+    public void addDocumento(Documento doc){
 
     }
     public void removeDocumento(String documento){

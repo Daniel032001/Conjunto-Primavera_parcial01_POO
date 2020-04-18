@@ -1,4 +1,4 @@
-package com.FGGP.x00055419;
+/*package com.FGGP.x00055419;
 import javax.swing.*;
 
 public final class CalculadoraImpuestos {
@@ -9,10 +9,10 @@ public final class CalculadoraImpuestos {
 
     private CalculadoraImpuestos(){
     }
-    public double calcularPago(Empleado empleado){
+    public double calcularPago(Empleado empleado){*/
         /*Empresa.planilla.forEach((tipoEmpleado)->{
         });if(Empresa.planilla.contains(""))*/
-        empleado.getSalario()=salario;
+       /* empleado.getSalario()=salario;
         tipoBuscado=Integer.parseInt(JOptionPane.showInputDialog(null,"1) Servicio Provisional\n2) Plaza Fija\nDigite opcion: ","Selecciona el tipo de Empleado",JOptionPane.QUESTION_MESSAGE));
         if(empleado instanceof PlazaFija){
             AFP=0.0625*empleado.getSalario();
@@ -38,7 +38,7 @@ public final class CalculadoraImpuestos {
             totalRenta+=Renta;
             pagoEmpleado = empleado.getSalario() - Renta;
             JOptionPane.showInputDialog(null, "Total Pago: " + pagoEmpleado, JOptionPane.QUESTION_MESSAGE);
-        }
+        }*/
        /* switch (tipoBuscado){
             case 1://SERVICIO PROVICIONAL
                 Renta=0.1*empleado.getSalario();
@@ -61,11 +61,11 @@ public final class CalculadoraImpuestos {
                 pagoEmpleado=restante-Renta;
                 break;`
         }*/
-    }
+   /* }
     public String mostrarTotales(){
         totalISSS+=ISSS;
         totalRenta+=Renta;
         totalAFP+=AFP;
         JOptionPane.showInputDialog(null,"Total AFP: "+totalAFP+"\nTotal ISSS: "+totalISSS+"\nTotal Renta: "+totalRenta,"Totales",JOptionPane.QUESTION_MESSAGE));
     }
-}
+}*/
