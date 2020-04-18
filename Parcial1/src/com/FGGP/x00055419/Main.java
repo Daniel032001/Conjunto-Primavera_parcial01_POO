@@ -28,12 +28,28 @@ public class Main {
                                 } catch (NullPointerException e) {
                                     campovacio();
                                 }
+                                if(meses<0){
+                                    JOptionPane.showMessageDialog(null,"Ingresa un valor valido","Error",JOptionPane.ERROR_MESSAGE);
+                                }
                             }
                             PlazaFija plaza = new PlazaFija(nombreempleado, puesto, salario, meses);
                             nuevaEmpresa.addEmpleado(plaza);
-                        } else {
+                             } else {
+                            extension=0;
+                            while(extension==0){
+                                try {
+                                    extension= Integer.parseInt(JOptionPane.showInputDialog(null, "Contrato :",
+                                            "Extension del contrato", JOptionPane.QUESTION_MESSAGE));
+                                } catch (NullPointerException e) {
+                                    campovacio();
+                                }
+                                if(extension<0){
+                                    JOptionPane.showMessageDialog(null,"Ingresa un valor valido","Error",JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
                             ServicioProfesional servicio = new ServicioProfesional(nombreempleado, puesto, salario, extension);
                             nuevaEmpresa.addEmpleado(servicio);
+                            JOptionPane.showMessageDialog(null,"Empleado agregado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
                         }
                         break;
                     case 2:
