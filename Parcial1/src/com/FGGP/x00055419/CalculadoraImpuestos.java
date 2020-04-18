@@ -1,13 +1,18 @@
 package com.FGGP.x00055419;
 import javax.swing.*;
 
+<<<<<<< HEAD
 public static class CalculadoraImpuestos {
     int tipoBuscado;
+=======
+public final class CalculadoraImpuestos {
+>>>>>>> bcecf5aae190c88259fa1f58e924a947aae08e90
     private double totalRenta, totalISSS, totalAFP;
     public double pagoEmpleado,restante,x;
 
     private CalculadoraImpuestos(){
     }
+<<<<<<< HEAD
 
     public double calcularPago(Empleado empleado){
         tipoBuscado=Integer.parseInt(JOptionPane.showInputDialog(null,"1) Servicio Provisional\n2) Plaza Fija\nDigite opcion: ","Selecciona el tipo de Empleado",JOptionPane.QUESTION_MESSAGE));
@@ -36,5 +41,14 @@ public static class CalculadoraImpuestos {
     }
     public String mostrarTotales(){
         JOptionPane.showInputDialog(null,"Total AFP: "+totalAFP+"\nTotal ISSS: "+totalISSS+"\nTotal Renta: "+totalRenta,"Totales",JOptionPane.QUESTION_MESSAGE));
+=======
+    public double calcularPago(Empleado emp){
+        double pago=0;
+        return pago;
+    }
+    public String mostrarTotales(){
+     String valor="vacio";
+     return valor;
+>>>>>>> bcecf5aae190c88259fa1f58e924a947aae08e90
     }
 }
