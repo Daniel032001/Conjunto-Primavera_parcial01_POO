@@ -33,11 +33,14 @@ public final class CalculadoraImpuestos {
                 pagoEmpleado=restante-renta;
                 break;
         }
+        return pagoEmpleado;
     }
     public String mostrarTotales(){
         totalISSS+=isss;
+        String mensaje="";
         totalRenta+=renta;
         totalAFP+=afp;
-        JOptionPane.showInputDialog(null,"Total AFP: "+totalAFP+"\nTotal ISSS: "+totalISSS+"\nTotal Renta: "+totalRenta,"Totales",JOptionPane.QUESTION_MESSAGE));
+        JOptionPane.showMessageDialog(null,"Total AFP: "+totalAFP+"\nTotal ISSS: "+totalISSS+"\nTotal Renta: "+totalRenta,"Totales",JOptionPane.INFORMATION_MESSAGE);
+        return mensaje;
     }
 }
