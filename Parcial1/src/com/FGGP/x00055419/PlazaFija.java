@@ -1,15 +1,8 @@
 package com.FGGP.x00055419;
 
-public class PlazaFija {
-    private int extension;
-    public String nombre, puesto;
-    public double salario;
-
-    public PlazaFija(int extension, String nombre, String puesto, double salario) {
-        this.extension = extension;
-        this.nombre = nombre;
-        this.puesto = puesto;
-        this.salario = salario;
+public class PlazaFija extends Empleado {
+    public PlazaFija(String nombre, String puesto, double salario) {
+        super(nombre, puesto, salario);
     }
 
     public int getExtension() {
