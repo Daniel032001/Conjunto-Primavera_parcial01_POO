@@ -49,8 +49,8 @@ public class Main {
                             }
                             ServicioProfesional servicio = new ServicioProfesional(nombreempleado, puesto, salario, extension);
                             nuevaEmpresa.addEmpleado(servicio);
-                            JOptionPane.showMessageDialog(null,"Empleado agregado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
-                        }
+                          }
+                        JOptionPane.showMessageDialog(null,"Empleado agregado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
                         break;
                     case 2:
                         break;
@@ -88,7 +88,7 @@ public class Main {
                     }
                     while (salario == 0) {
                         try {
-                            salario = Double.parseDouble(JOptionPane.showInputDialog(null, "omg", "omg", JOptionPane.INFORMATION_MESSAGE));
+                            salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario :", "Ingresa un salario", JOptionPane.INFORMATION_MESSAGE));
                         } catch (NumberFormatException e) {
                             campovacio();
                         }
