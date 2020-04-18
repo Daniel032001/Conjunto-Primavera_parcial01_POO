@@ -17,7 +17,7 @@ public class Main {
             do {
                 op = menu();
                 switch (op) {
-                    case 1:
+                    case 1://AGREGAR EMPLEADO
                         agregarempleado();
                         if (tipo == 1) {
                             meses=0;
@@ -52,13 +52,14 @@ public class Main {
                           }
                         JOptionPane.showMessageDialog(null,"Empleado agregado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
                         break;
-                    case 2:
+                    case 2://DESPEDIR EMPLEADO
                         break;
-                    case 3:
+                    case 3://VER LISTA DE EMPLEADOS
                         break;
-                    case 4:
+                    case 4://CALCULAR SUELDO
                         break;
-                    case 5:
+                    case 5://MOSTRAR TOTALES
+                        CalculadoraImpuestos.mostrarTotales();
                         break;
                     case 6:
                         break;

@@ -17,6 +17,8 @@ public final class CalculadoraImpuestos {
         if(empleado instanceof PlazaFija){
             AFP=0.0625*empleado.getSalario();
             ISSS=0.03*empleado.getSalario();
+            totalISSS+=ISSS;
+            totalAFP+=AFP;
             restante=empleado.getSalario()-AFP-ISSS;
             x=restante;
             if(empleado.getSalario()>=0.01 && empleado.getSalario()<=472.00){
@@ -28,9 +30,12 @@ public final class CalculadoraImpuestos {
             } else if(empleado.getSalario()>=2038.11) {
                 Renta = 0.3 * (x - 472) + 17.67;
             }
+            totalRenta+=Renta;
             pagoEmpleado=restante-Renta;
+
         }else if(empleado instanceof ServicioProfesional){
             Renta = 0.1 * empleado.getSalario();
+            totalRenta+=Renta;
             pagoEmpleado = empleado.getSalario() - Renta;
             JOptionPane.showInputDialog(null, "Total Pago: " + pagoEmpleado, JOptionPane.QUESTION_MESSAGE);
         }
