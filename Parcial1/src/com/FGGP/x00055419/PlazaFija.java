@@ -17,12 +17,12 @@ public class PlazaFija extends Empleado {
 
     @Override
     public String toString() {
-        return "PlazaFija{" +
-                " nombre=" + nombre +
-                ", puesto='" + puesto + '\'' +
-                ", salario=" + salario +'\''+
-                ",extension=" + extension +'\''+
+        return "\nP.Fija-" +
+                " nombre:" + nombre +
+                ", puesto:'" + puesto  +
+                ", salario:" + salario +
+                ",extension:" + extension +" Documentos "+
                  documentos +
-                '}'+"\n";
+                "\n";
     }
 }

@@ -1,5 +1,4 @@
 package com.FGGP.x00055419;
-
 import javax.swing.*;
 public class Main {
         public static double salario;
@@ -12,9 +11,17 @@ public class Main {
             int op = 0;
             String nombreempresa = "";
             do {
-                nombreempresa = JOptionPane.showInputDialog(null, "Ingresa el nombre de la empresa : ", "Crear nueva empresa", JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    nombreempresa = JOptionPane.showInputDialog(null, "Ingresa el nombre de la empresa : ", "Crear nueva empresa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                catch (NullPointerException e){
+                    campovacio();
+                }
+                if(nombreempresa==null){
+                    System.exit(0);
+                }
             }
-            while (nombreempresa.equals(""));
+            while (nombreempresa.equals("") );
             nuevaEmpresa = new Empresa(nombreempresa);
             do {
                 op = menu();
@@ -36,6 +43,7 @@ public class Main {
                                 }
                                 if(meses<0){
                                     JOptionPane.showMessageDialog(null,"Ingresa un valor valido","Error",JOptionPane.ERROR_MESSAGE);
+                                    meses=0;
                                 }
                             }
                             plaza = new PlazaFija(nombreempleado, puesto, salario, meses);
@@ -57,6 +65,7 @@ public class Main {
                                 }
                                 if(extension<0){
                                     JOptionPane.showMessageDialog(null,"Ingresa un valor valido","Error",JOptionPane.ERROR_MESSAGE);
+                                    extension=0;
                                 }
                             }
                             servicio= new ServicioProfesional(nombreempleado, puesto, salario, extension);
@@ -73,9 +82,10 @@ public class Main {
                         break;
                     case 2://DESPEDIR EMPLEADO
                         nombreempleado="";
+                        String nombreaux="";
                        while(nombreempleado.equals("")) {
                            try {
-                               nombreempleado = JOptionPane.showInputDialog(null, "Nombre :", "Ingresa nombre del empleado", JOptionPane.INFORMATION_MESSAGE);
+                               nombreempleado = JOptionPane.showInputDialog(null, "Nombre :", "Ingresa nombre del empleado",JOptionPane.INFORMATION_MESSAGE);
                            }
                            catch (NullPointerException e){
                                campovacio();
@@ -83,37 +93,33 @@ public class Main {
                        }
                         for (Empleado aux:nuevaEmpresa.getPlanilla()) {
                             if(nombreempleado.equals(aux.getNombre())){
-                                //nuevaEmpresa.quitEmpleado(aux.getNombre());
-                                if(aux instanceof ServicioProfesional){
-                                    for(Documento aux1:aux.getDocumentos()){
-                                    System.out.println(aux1.toString());
-                                }
-                                }
+                                nombreaux=aux.getNombre();
                             }
-                            else{
-                                JOptionPane.showMessageDialog(null,"No se encontro este empleado","Error",JOptionPane.ERROR_MESSAGE);
-                            }
+                        }
+                        if(nombreaux==""){
+                           JOptionPane.showMessageDialog(null,"No se encontro este empleado","Error",JOptionPane.ERROR_MESSAGE);
+                        }else{
+                            nuevaEmpresa.quitEmpleado(nombreaux);
                         }
                        break;
                     case 3://VER LISTA DE EMPLEADOS
-                        String mensaje=nuevaEmpresa.getPlanilla().toString();
-                        JOptionPane.showMessageDialog(null,mensaje,"Lista de empleados",JOptionPane.INFORMATION_MESSAGE);
-                        break;
+                        String mensaje = nuevaEmpresa.getPlanilla().toString();
+                        JOptionPane.showMessageDialog(null, mensaje, "Lista de empleados", JOptionPane.INFORMATION_MESSAGE);
+                       break;
                     case 4://CALCULAR SUELDO
+                        int valores=0;
                         for (Empleado aux: nuevaEmpresa.getPlanilla()
                              ) {
+                            valores++;
                             System.out.println("omg");
                             CalculadoraImpuestos.calcularPago(aux);
                         }
-                        /*for (Empleado aux2: nuevaEmpresa.getPlanilla()) {
-                            System.out.println("omg");
-
-                        }*/
-
+                        if(valores==0){
+                            JOptionPane.showMessageDialog(null,"No hay datos","Error",JOptionPane.ERROR_MESSAGE);
+                        }
                         break;
                     case 5://MOSTRAR TOTALES
-                        CalculadoraImpuestos.mostrarTotales();
-                        JOptionPane.showMessageDialog(null, CalculadoraImpuestos.mostrarTotales(), "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, CalculadoraImpuestos.mostrarTotales(), "Aviso", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     case 6:
                         JOptionPane.showMessageDialog(null, "Gracias por usar el programa, te recomendamos buscar: " +
@@ -201,8 +207,17 @@ public class Main {
             }
         }
         public static int menu () {
-            int valor = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa una opcion \n1)Agregar empleado\n2)Despedir empleado+" +
-                    "\n 3)Ver lista de empleados\n4)Calcular sueldo\n5)Mostrar totales", "Menu principal", JOptionPane.QUESTION_MESSAGE));
+            int valor=0;
+            try {
+                valor = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa una opcion \n1)Agregar empleado\n2)Despedir empleado" +
+                        "\n3)Ver lista de empleados\n4)Calcular sueldo\n5)Mostrar totales\n6)Salir", "Menu principal", JOptionPane.QUESTION_MESSAGE));
+            }
+            catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"Dato invalido","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            catch (NullPointerException e){
+                campovacio();
+            }
        return valor;
       }
 }

@@ -1,5 +1,6 @@
 package com.FGGP.x00055419;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Empresa {
@@ -21,7 +22,7 @@ public class Empresa {
     }
     public void quitEmpleado(String nombre){
         if(planilla.removeIf(s->s.getNombre().equals(nombre))) {
-            System.out.println("grande");
+            JOptionPane.showMessageDialog(null,"Eliminado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

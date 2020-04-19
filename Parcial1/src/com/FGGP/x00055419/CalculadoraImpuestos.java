@@ -43,11 +43,12 @@ public final class CalculadoraImpuestos {
     }
 
     public static String mostrarTotales() {
+        String totales="";
         if (totalAFP == 0 && totalRenta == 0 && totalISSS == 0) {
-            JOptionPane.showMessageDialog(null, "No se han calculado pagos", "Error", JOptionPane.ERROR_MESSAGE);
+            totales="No se han calculado pagos";
+        }else {
+            totales = "Total AFP: " + totalAFP + "\nTotal ISSS: " + totalISSS + "\nTotal Renta: " + totalRenta;
         }
-        String totales = "Total AFP: " + totalAFP + "\nTotal ISSS: " + totalISSS + "\nTotal Renta: " + totalRenta;
         return totales;
     }
 }
-//calculadora.calcularPago(aux);
