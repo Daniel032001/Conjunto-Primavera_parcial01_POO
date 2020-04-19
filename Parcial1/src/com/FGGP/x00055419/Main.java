@@ -83,7 +83,10 @@ public class Main {
                        }
                         for (Empleado aux:nuevaEmpresa.getPlanilla()) {
                             if(nombreempleado.equals(aux.getNombre())){
-                                nuevaEmpresa.quitEmpleado(aux.getNombre());
+                                //nuevaEmpresa.quitEmpleado(aux.getNombre());
+                                for(Documento aux1:aux.getDocumentos()){
+                                    System.out.println(aux1.toString());
+                                }
                                 /*if(aux instanceof ServicioProfesional){
 
                                 }*/
