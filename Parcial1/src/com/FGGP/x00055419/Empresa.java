@@ -20,7 +20,9 @@ public class Empresa {
         planilla.add(emp);
     }
     public void quitEmpleado(String nombre){
-
+        if(planilla.removeIf(s->s.getNombre().equals(nombre))) {
+            System.out.println("grande");
+        }
     }
 
     @Override

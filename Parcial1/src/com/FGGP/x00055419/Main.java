@@ -7,6 +7,7 @@ public class Main {
         public static String nombreempleado,puesto,nombredoc,numerodoc;
         public static int meses,extension,tipo;
         public static void main(String[] args) {
+            ServicioProfesional servicio;PlazaFija plaza;
             Empresa nuevaEmpresa;
             int op = 0;
             String nombreempresa = "";
@@ -37,7 +38,7 @@ public class Main {
                                     JOptionPane.showMessageDialog(null,"Ingresa un valor valido","Error",JOptionPane.ERROR_MESSAGE);
                                 }
                             }
-                            PlazaFija plaza = new PlazaFija(nombreempleado, puesto, salario, meses);
+                            plaza = new PlazaFija(nombreempleado, puesto, salario, meses);
                             nuevaEmpresa.addEmpleado(plaza);
                             while(agregardoc==true) {
                                 agregardoc();
@@ -58,7 +59,7 @@ public class Main {
                                     JOptionPane.showMessageDialog(null,"Ingresa un valor valido","Error",JOptionPane.ERROR_MESSAGE);
                                 }
                             }
-                            ServicioProfesional servicio = new ServicioProfesional(nombreempleado, puesto, salario, extension);
+                            servicio= new ServicioProfesional(nombreempleado, puesto, salario, extension);
                             nuevaEmpresa.addEmpleado(servicio);
                             while(agregardoc==true) {
                                 agregardoc();
@@ -71,8 +72,24 @@ public class Main {
 
                         break;
                     case 2://DESPEDIR EMPLEADO
-                        
-                        break;
+                        nombreempleado="";
+                       while(nombreempleado.equals("")) {
+                           try {
+                               nombreempleado = JOptionPane.showInputDialog(null, "Nombre :", "Ingresa nombre del empleado", JOptionPane.INFORMATION_MESSAGE);
+                           }
+                           catch (NullPointerException e){
+                               campovacio();
+                           }
+                       }
+                        for (Empleado aux:nuevaEmpresa.getPlanilla()) {
+                            if(nombreempleado.equals(aux.getNombre())){
+                                nuevaEmpresa.quitEmpleado(aux.getNombre());
+                                /*if(aux instanceof ServicioProfesional){
+
+                                }*/
+                            }
+                        }
+                       break;
                     case 3://VER LISTA DE EMPLEADOS
                         String mensaje=nuevaEmpresa.getPlanilla().toString();
                         JOptionPane.showMessageDialog(null,mensaje,"Lista de empleados",JOptionPane.INFORMATION_MESSAGE);
