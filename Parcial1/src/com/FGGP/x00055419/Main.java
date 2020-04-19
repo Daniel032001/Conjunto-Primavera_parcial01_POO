@@ -57,7 +57,6 @@ public class Main {
                                 Documento nuevodocumento= new Documento(nombredoc, numerodoc);
                                 plaza.addDocumento(nuevodocumento);
                             }
-                            System.out.println(plaza.toString());
                         } else {
                             extension=0;
                             while(extension==0){
@@ -65,6 +64,9 @@ public class Main {
                                     extension= Integer.parseInt(JOptionPane.showInputDialog(null, "Contrato :",
                                             "Extension del contrato", JOptionPane.QUESTION_MESSAGE));
                                 } catch (NullPointerException e) {
+                                    campovacio();
+                                }
+                                catch (NumberFormatException e){
                                     campovacio();
                                 }
                                 if(extension<0){
@@ -79,7 +81,6 @@ public class Main {
                                 Documento nuevodocu= new Documento(nombredoc, numerodoc);
                                 servicio.addDocumento(nuevodocu);
                             }
-                            System.out.println(servicio.toString());
                           }
                         JOptionPane.showMessageDialog(null,"Empleado agregado correctamente","Hecho",JOptionPane.INFORMATION_MESSAGE);
 
@@ -107,15 +108,31 @@ public class Main {
                         }
                        break;
                     case 3://VER LISTA DE EMPLEADOS
-                        String mensaje = nuevaEmpresa.getPlanilla().toString();
-                        JOptionPane.showMessageDialog(null, mensaje, "Lista de empleados", JOptionPane.INFORMATION_MESSAGE);
+                        String mensaje="";
+                        for (Empleado axui:nuevaEmpresa.getPlanilla()) {
+                            mensaje+="\nEmpleado: "+axui.getNombre()+" Cargo: "+axui.getPuesto()+" Salario: "+axui.getSalario()+" ";
+                            if(axui instanceof PlazaFija){
+                                mensaje+="Plaza fija"+"\nDocumentos | " ;
+                            }
+                            else{
+                                mensaje+="Servicio profesional"+"\nDocumentos | ";
+                            }
+                            for (Documento axui2:axui.getDocumentos()) {
+                                mensaje+="Nombre: "+axui2.getNombre()+" Numero: "+axui2.getNumero()+" ";
+                            }
+                        }
+                        if(mensaje.equals("")){
+                            JOptionPane.showMessageDialog(null,"No hay empleados registrados","Error",JOptionPane.ERROR_MESSAGE);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, mensaje, "Lista de empleados", INFORMATION_MESSAGE);
+                        }
                        break;
                     case 4://CALCULAR SUELDO
                         int valores=0;
-                        for (Empleado aux: nuevaEmpresa.getPlanilla()
-                             ) {
+                        for (Empleado aux: nuevaEmpresa.getPlanilla()) {
                             valores++;
-                            JOptionPane.showMessageDialog(null, "Total Pago: " +CalculadoraImpuestos.calcularPago(aux),"Informacion", INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Empleado : "+aux.getNombre()+" Total Pago: " +CalculadoraImpuestos.calcularPago(aux),"Informacion", INFORMATION_MESSAGE);
                         }
                         if(valores==0){
                             JOptionPane.showMessageDialog(null,"No hay datos","Error",JOptionPane.ERROR_MESSAGE);
@@ -126,7 +143,7 @@ public class Main {
                         break;
                     case 6:
                         JOptionPane.showMessageDialog(null, "Gracias por usar el programa, te recomendamos buscar: " +
-                                "Tu ultima cancion-Los temerarios...", "Saliendo...", JOptionPane.ERROR_MESSAGE);
+                                "Tu ultima cancion-Los temerarios...", "Saliendo...", INFORMATION_MESSAGE);
                         break;
                 }
             }
@@ -191,6 +208,10 @@ public class Main {
                     salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario :", "Ingresa un salario", JOptionPane.INFORMATION_MESSAGE));
                 } catch (NumberFormatException e) {
                     campovacio();
+                }
+                if(salario<=0){
+                    salario=0;
+                    JOptionPane.showMessageDialog(null,"Ingresa un salario valido","Error",JOptionPane.ERROR_MESSAGE);
                 }
             }
             while (tipo == 0) {

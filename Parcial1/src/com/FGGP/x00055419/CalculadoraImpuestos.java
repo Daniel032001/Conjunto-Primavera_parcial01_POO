@@ -1,8 +1,6 @@
 package com.FGGP.x00055419;
-import javax.swing.*;
-
-import static javax.swing.JOptionPane.*;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 public final class CalculadoraImpuestos {
     private static double totalRenta = 0;
     private static double totalISSS = 0;
@@ -32,22 +30,27 @@ public final class CalculadoraImpuestos {
             }
             totalRenta += Renta;
             pagoEmpleado = restante - Renta;
-            showInputDialog(null, "Total Pago: " + pagoEmpleado, QUESTION_MESSAGE);
 
         } else if (empleado instanceof ServicioProfesional) {//SI ES SERVICIO PROFESIONAL
             Renta = 0.1 * empleado.getSalario();
             totalRenta += Renta;
             pagoEmpleado = empleado.getSalario() - Renta;
-            showInputDialog(null, "Total Pago: " + pagoEmpleado, QUESTION_MESSAGE);
         }
-        return 0.0;
+        BigDecimal bigDecimal = new BigDecimal(pagoEmpleado).setScale(2, RoundingMode.UP);
+        return bigDecimal.doubleValue();
     }
 
     public static String mostrarTotales() {
+        BigDecimal bigDecimal = new BigDecimal(totalAFP).setScale(2, RoundingMode.UP);
+        BigDecimal bigDecimal1 = new BigDecimal(totalISSS).setScale(2, RoundingMode.UP);
+        BigDecimal bigDecimal2= new BigDecimal(totalRenta).setScale(2, RoundingMode.UP);
+        String totales="";
         if (totalAFP == 0 && totalRenta == 0 && totalISSS == 0) {
-            JOptionPane.showMessageDialog(null, "No se han calculado pagos", "Error", JOptionPane.ERROR_MESSAGE);
+            totales="No se han calculado pagos";
         }
-        String totales = "Total AFP: " + totalAFP + "\nTotal ISSS: " + totalISSS + "\nTotal Renta: " + totalRenta;
+        else{
+            totales = "Total AFP: " + bigDecimal.doubleValue() + "\nTotal ISSS: " + bigDecimal1.doubleValue() + "\nTotal Renta: " + bigDecimal2.doubleValue();
+        }
         return totales;
     }
 }
