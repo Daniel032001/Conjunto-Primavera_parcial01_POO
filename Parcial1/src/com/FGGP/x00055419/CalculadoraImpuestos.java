@@ -10,7 +10,7 @@ public final class CalculadoraImpuestos {
 
     private CalculadoraImpuestos(){}
 
-    public final double calcularPago(Empleado empleado){
+    public static double calcularPago(Empleado empleado){
         double ISSS=0, Renta = 0, AFP=0, pagoEmpleado=0, restante=0, x=0;
         if (empleado instanceof PlazaFija) {
             AFP = 0.0625 * empleado.getSalario();
@@ -39,7 +39,7 @@ public final class CalculadoraImpuestos {
         }
         return 0.0;
     }
-    public final String mostrarTotales(){
+    public static String mostrarTotales(){
         String totales="Total AFP: "+totalAFP+"\nTotal ISSS: "+totalISSS+"\nTotal Renta: "+totalRenta;
         return totales;
     }

@@ -84,12 +84,14 @@ public class Main {
                         for (Empleado aux:nuevaEmpresa.getPlanilla()) {
                             if(nombreempleado.equals(aux.getNombre())){
                                 //nuevaEmpresa.quitEmpleado(aux.getNombre());
-                                for(Documento aux1:aux.getDocumentos()){
+                                if(aux instanceof ServicioProfesional){
+                                    for(Documento aux1:aux.getDocumentos()){
                                     System.out.println(aux1.toString());
                                 }
-                                /*if(aux instanceof ServicioProfesional){
-
-                                }*/
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"No se encontro este empleado","Error",JOptionPane.ERROR_MESSAGE);
                             }
                         }
                        break;
@@ -100,7 +102,7 @@ public class Main {
                     case 4://CALCULAR SUELDO
                         break;
                     case 5://MOSTRAR TOTALES
-                        //CalculadoraImpuestos.mostrarTotales();
+                        CalculadoraImpuestos.mostrarTotales();
                         break;
                     case 6:
                         break;
