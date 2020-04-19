@@ -100,15 +100,28 @@ public class Main {
                         JOptionPane.showMessageDialog(null,mensaje,"Lista de empleados",JOptionPane.INFORMATION_MESSAGE);
                         break;
                     case 4://CALCULAR SUELDO
+                        for (Empleado aux: nuevaEmpresa.getPlanilla()
+                             ) {
+                            System.out.println("omg");
+                            CalculadoraImpuestos.calcularPago(aux);
+                        }
+                        /*for (Empleado aux2: nuevaEmpresa.getPlanilla()) {
+                            System.out.println("omg");
+
+                        }*/
+
                         break;
                     case 5://MOSTRAR TOTALES
                         CalculadoraImpuestos.mostrarTotales();
+                        JOptionPane.showMessageDialog(null, CalculadoraImpuestos.mostrarTotales(), "Error", JOptionPane.ERROR_MESSAGE);
                         break;
                     case 6:
+                        JOptionPane.showMessageDialog(null, "Gracias por usar el programa, te recomendamos buscar: " +
+                                "Tu ultima cancion-Los temerarios...", "Saliendo...", JOptionPane.ERROR_MESSAGE);
                         break;
                 }
             }
-            while (op != 5);
+            while (op != 6);
         }
         public static void campovacio () {
             JOptionPane.showMessageDialog(null, "No puedes dejar el campo vacio", "Error", JOptionPane.ERROR_MESSAGE);

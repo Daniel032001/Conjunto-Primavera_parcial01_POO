@@ -4,14 +4,15 @@ import javax.swing.*;
 import static javax.swing.JOptionPane.*;
 
 public final class CalculadoraImpuestos {
-    private static double totalRenta=0;
-    private static double totalISSS=0;
+    private static double totalRenta = 0;
+    private static double totalISSS = 0;
     private static double totalAFP = 0;
 
-    private CalculadoraImpuestos(){}
+    private CalculadoraImpuestos() {
+    }
 
-    public static double calcularPago(Empleado empleado){
-        double ISSS=0, Renta = 0, AFP=0, pagoEmpleado=0, restante=0, x=0;
+    public static double calcularPago(Empleado empleado) {
+        double ISSS = 0, Renta = 0, AFP = 0, pagoEmpleado = 0, restante = 0, x = 0;
         if (empleado instanceof PlazaFija) {
             AFP = 0.0625 * empleado.getSalario();
             ISSS = 0.03 * empleado.getSalario();
@@ -30,6 +31,7 @@ public final class CalculadoraImpuestos {
             }
             totalRenta += Renta;
             pagoEmpleado = restante - Renta;
+            showInputDialog(null, "Total Pago: " + pagoEmpleado, QUESTION_MESSAGE);
 
         } else if (empleado instanceof ServicioProfesional) {
             Renta = 0.1 * empleado.getSalario();
@@ -39,8 +41,12 @@ public final class CalculadoraImpuestos {
         }
         return 0.0;
     }
-    public static String mostrarTotales(){
-        String totales="Total AFP: "+totalAFP+"\nTotal ISSS: "+totalISSS+"\nTotal Renta: "+totalRenta;
+
+    public static String mostrarTotales() {
+        if (totalAFP == 0 && totalRenta == 0 && totalISSS == 0) {
+            JOptionPane.showMessageDialog(null, "No se han calculado pagos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        String totales = "Total AFP: " + totalAFP + "\nTotal ISSS: " + totalISSS + "\nTotal Renta: " + totalRenta;
         return totales;
     }
 }
