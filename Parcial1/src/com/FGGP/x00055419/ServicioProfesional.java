@@ -19,11 +19,10 @@ public  class ServicioProfesional extends Empleado {
     @Override
     public String toString() {
         return "ServicioProfesional{" +
-                "mesesContrato=" + mesesContrato +
-                ", nombre='" + nombre + '\'' +
+                "nombre='" + nombre  +
                 ", puesto='" + puesto + '\'' +
-                ", documento=" + documentos +
                 ", salario=" + salario +
-                '}';
+                ",mesesContrato=" + mesesContrato +
+                '}'+  documentos +"\n";
     }
 }

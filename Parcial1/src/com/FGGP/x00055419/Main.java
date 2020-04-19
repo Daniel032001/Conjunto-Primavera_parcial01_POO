@@ -71,13 +71,16 @@ public class Main {
 
                         break;
                     case 2://DESPEDIR EMPLEADO
+                        
                         break;
                     case 3://VER LISTA DE EMPLEADOS
+                        String mensaje=nuevaEmpresa.getPlanilla().toString();
+                        JOptionPane.showMessageDialog(null,mensaje,"Lista de empleados",JOptionPane.INFORMATION_MESSAGE);
                         break;
                     case 4://CALCULAR SUELDO
                         break;
                     case 5://MOSTRAR TOTALES
-                        CalculadoraImpuestos.mostrarTotales();
+                        //CalculadoraImpuestos.mostrarTotales();
                         break;
                     case 6:
                         break;
