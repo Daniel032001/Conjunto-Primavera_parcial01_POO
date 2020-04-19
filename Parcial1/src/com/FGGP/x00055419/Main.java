@@ -1,5 +1,9 @@
 package com.FGGP.x00055419;
 import javax.swing.*;
+
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class Main {
         public static double salario;
         public static boolean agregardoc;
@@ -111,8 +115,7 @@ public class Main {
                         for (Empleado aux: nuevaEmpresa.getPlanilla()
                              ) {
                             valores++;
-                            System.out.println("omg");
-                            CalculadoraImpuestos.calcularPago(aux);
+                            JOptionPane.showMessageDialog(null, "Total Pago: " +CalculadoraImpuestos.calcularPago(aux),"Informacion", INFORMATION_MESSAGE);
                         }
                         if(valores==0){
                             JOptionPane.showMessageDialog(null,"No hay datos","Error",JOptionPane.ERROR_MESSAGE);

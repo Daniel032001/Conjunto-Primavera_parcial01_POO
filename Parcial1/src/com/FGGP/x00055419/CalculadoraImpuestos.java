@@ -31,15 +31,13 @@ public final class CalculadoraImpuestos {
             }
             totalRenta += Renta;
             pagoEmpleado = restante - Renta;
-            showInputDialog(null, "Total Pago: " + pagoEmpleado, QUESTION_MESSAGE);
 
         } else if (empleado instanceof ServicioProfesional) {
             Renta = 0.1 * empleado.getSalario();
             totalRenta += Renta;
             pagoEmpleado = empleado.getSalario() - Renta;
-            showInputDialog(null, "Total Pago: " + pagoEmpleado, QUESTION_MESSAGE);
         }
-        return 0.0;
+        return pagoEmpleado;
     }
 
     public static String mostrarTotales() {
